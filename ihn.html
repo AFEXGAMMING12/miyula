@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Social Media Icons Interface</title>
+  <style>
+    :root {
+      --bg-light: #f5f7fa;
+      --bg-dark: #0e0e0e;
+      --icon-bg-light: #ffffff;
+      --icon-bg-dark: #1e1e1e;
+      --glow-color: #00ffff;
+    }
+
+    body {
+      background:
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: #eee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      transition: background 0.5s ease, color 0.5s ease;
+    }
+
+    body.dark {
+      background:
+        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: #ddd;
+    }
+
+    #dateTimeDisplay {
+      position: fixed;
+      top: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.4);
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-size: 16px;
+      color: #00ffff;
+      box-shadow: 0 0 10px #00ffffaa;
+      user-select: none;
+      transition: color 0.5s ease, background 0.5s ease;
+      z-index: 1000;
+    }
+
+    body.dark #dateTimeDisplay {
+      background: rgba(255,255,255,0.1);
+      color: #00ffffcc;
+      box-shadow: 0 0 15px #00ffffdd;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      padding: 10px 15px;
+      background: linear-gradient(145deg, #007bff, #0056b3);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn:hover {
+      background: #004190;
+      transform: scale(1.05);
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .icon {
+      width: 80px;
+      height: 80px;
+      background: var(--icon-bg-light);
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .icon:hover {
+      transform: scale(1.2);
+      box-shadow: 0 0 20px var(--glow-color), 0 0 40px var(--glow-color);
+    }
+
+    body.dark .icon {
+      background: var(--icon-bg-dark);
+      box-shadow: 0 4px 12px rgba(255,255,255,0.05);
+    }
+
+    .icon img {
+      width: 40px;
+      height: 40px;
+      transition: transform 0.3s ease;
+    }
+
+    .loading-spinner {
+      width: 25px;
+      height: 25px;
+      border: 3px solid #fff;
+      border-top: 3px solid #00ffff;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      position: absolute;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @media (max-width: 480px) {
+      .icon {
+        width: 60px;
+        height: 60px;
+      }
+      .icon img {
+        width: 28px;
+        height: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div id="dateTimeDisplay"></div>
+
+<div class="container">
+  <div class="btn-group">
+    <button class="btn" id="toggleTheme">Dark Mode</button>
+    <button class="btn" id="languageSwitch">සිංහල ↔ English</button>
+    <button class="btn" onclick="location.reload()">Refresh 🔄</button>
+  </div>
+
+  <div class="social-icons" id="socialContainer">
+    <a href="https://www.youtube.com/" target="_blank" class="icon" title="YouTube" id="youtube">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube Logo" />
+    </a>
+
+    <a href="https://www.facebook.com/" target="_blank" class="icon" title="Facebook" id="facebook">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook Logo" />
+    </a>
+
+    <a href="https://www.tiktok.com/" target="_blank" class="icon" title="TikTok" id="tiktok">
+      <img src="https://cdn-icons-png.flaticon.com/512/3046/3046122.png" alt="TikTok Logo" />
+    </a>
+
+    <a href="https://www.instagram.com/" target="_blank" class="icon" title="Instagram" id="instagram">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Logo" />
+    </a>
+
+    <a href="https://www.whatsapp.com/" target="_blank" class="icon" title="WhatsApp" id="whatsapp">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo" />
+    </a>
+
+    <a href="https://twitter.com/" target="_blank" class="icon" title="Twitter / X" id="twitter">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Logo_of_Twitter.svg" alt="Twitter X Logo" />
+    </a>
+
+<a href="https://www.pinterest.com/" target="_blank" class="icon" title="Pinterest" id="pinterest">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Pinterest-logo.png" alt="Pinterest Logo" />
+</a>
+
+<a href="https://www.messenger.com/" target="_blank" class="icon" title="Messenger" id="messenger">
+  <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/facebook-messenger-icon.png" alt="Messenger Logo" />
+</a>
+  </div>
+
+
+
+
+
+<div class="footer-copy">
+    © 2025 Mrm Dgaya. All rights reserved.
+  </div>
+</footer>
+</div>
+
+<!-- Sound effects -->
+<audio id="sound-youtube" src="https://www.soundjay.com/buttons/sounds/button-20.mp3" preload="auto"></audio>
+<audio id="sound-facebook" src="https://www.soundjay.com/buttons/sounds/button-20.mp3" preload="auto"></audio>
+<audio id="sound-tiktok" src="https://www.soundjay.com/buttons/sounds/button-20.mp3" preload="auto"></audio>
+<audio id="sound-instagram" src="https://www.soundjay.com/buttons/sounds/button-20.mp3" preload="auto"></audio>
+<audio id="sound-whatsapp" src="https://www.soundjay.com/buttons/sounds/button-20.mp3" preload="auto"></audio>
+<audio id="sound-twitter" src="https://www.soundjay.com/buttons/sounds/button-20.mp3" preload="auto"></audio>
+<audio id="sound-messenger" src="https://www.soundjay.com/buttons/sounds/button-20.mp3" preload="auto"></audio>
+<audio id="sound-pinterest" src="https://www.soundjay.com/buttons/sounds/button-20.mp3" preload="auto"></audio>
+
+
+<script>
+  const toggleBtn = document.getElementById('toggleTheme');
+  const langBtn = document.getElementById('languageSwitch');
+  let isSinhala = true;
+
+  toggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    toggleBtn.textContent = document.body.classList.contains('dark') ? 'Light Mode' : 'Dark Mode';
+  });
+
+  langBtn.addEventListener('click', () => {
+    isSinhala = !isSinhala;
+    document.title = isSinhala ? "සමාජ ජාල අතුරුමුහුණත" : "Social Media Icons Interface";
+    toggleBtn.textContent = isSinhala ? "අඳුරු ප්‍රකාරය" : "Dark Mode";
+    langBtn.textContent = isSinhala ? "සිංහල ↔ English" : "English ↔ සිංහල";
+  });
+
+  const sounds = {
+    youtube: document.getElementById('sound-youtube'),
+    facebook: document.getElementById('sound-facebook'),
+    tiktok: document.getElementById('sound-tiktok'),
+    instagram: document.getElementById('sound-instagram'),
+    whatsapp: document.getElementById('sound-whatsapp'),
+    twitter: document.getElementById('sound-twitter')
+  };
+
+  const icons = document.querySelectorAll('.icon');
+  icons.forEach(icon => {
+    icon.addEventListener('click', () => {
+      const spinner = document.createElement('div');
+      spinner.classList.add('loading-spinner');
+      icon.appendChild(spinner);
+
+      const id = icon.id;
+      const sound = sounds[id];
+      if (sound) {
+        sound.currentTime = 0;
+        sound.play();
+      }
+
+      setTimeout(() => {
+        icon.removeChild(spinner);
+      }, 1000);
+    });
+  });
+
+  function updateDateTime() {
+    const now = new Date();
+    const optionsDate = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'short' };
+    const optionsTime = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+    const formattedDate = now.toLocaleDateString(isSinhala ? 'si-LK' : 'en-US', optionsDate);
+    const formattedTime = now.toLocaleTimeString(isSinhala ? 'si-LK' : 'en-US', optionsTime);
+    document.getElementById('dateTimeDisplay').textContent = `${formattedDate} | ${formattedTime}`;
+  }
+
+  updateDateTime();
+  setInterval(updateDateTime, 1000);
+</script>
+
+</body>
+</html>
+
