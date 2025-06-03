@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MyApp Store</title>
+  <style>
+    body { font-family: sans-serif; background: #f4f4f4; margin: 0; padding: 1rem; }
+    h1 { text-align: center; }
+    .app-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+    .app-card { background: white; border-radius: 12px; padding: 1rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center; }
+    .app-card img { width: 64px; height: 64px; }
+    .download-btn { margin-top: 10px; padding: 8px 16px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    .search-bar { width: 100%; padding: 10px; margin-bottom: 1rem; font-size: 16px; }
+  </style>
+</head>
+<body>
+  <h1>📱 MyApp Store</h1>
+  <input class="search-bar" type="text" id="search" placeholder="Search for apps..." onkeyup="filterApps()">
+
+  <div class="app-grid" id="appList">
+    <!-- Example App -->
+    <div class="app-card">
+      <img src="youtube.png" alt="YouTube">
+      <h3>YouTube</h3>
+      <p>Version: 18.21.34 • Size: 55MB</p>
+      <a href="apks/youtube.apk" download><button class="download-btn">Download</button></a>
+    </div>
+
+    <div class="app-card">
+      <img src="tiktok.png" alt="TikTok">
+      <h3>TikTok</h3>
+      <p>Version: 32.5.12 • Size: 89MB</p>
+      <a href="apks/tiktok.apk" download><button class="download-btn">Download</button></a>
+    </div>
+    <!-- Add more apps here -->
+  </div>
+
+  <script>
+    function filterApps() {
+      let input = document.getElementById("search").value.toLowerCase();
+      let cards = document.querySelectorAll(".app-card");
+      cards.forEach(card => {
+        let title = card.querySelector("h3").innerText.toLowerCase();
+        card.style.display = title.includes(input) ? "block" : "none";
+      });
+    }
+  </script>
+</body>
+</html>
